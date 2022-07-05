@@ -1,1 +1,3 @@
-<font size="6"> Exercise 1: Getting Started in R </font>
+# Empirical Exercises
+
+[Exercise 1:  Getting Started in Stata](E1-intro.html)
