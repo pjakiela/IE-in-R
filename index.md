@@ -1,3 +1,3 @@
 # Empirical Exercises
 
-[Exercise 1:  Getting Started in Stata](E1-intro.html)
+[Exercise 1:  Getting Started in R](E1-intro.html)
