@@ -6,51 +6,29 @@ paper [Price Subsidies, Diagnostic Tests, and Targeting of Malaria Treatment: Ev
 by Jessica Cohen, Pascaline Dupas, and Simone Schaner, published in the _American Economic Review_ in 2015.  The authors examine behavioral responses to 
 various discounts ("subsidies") for malaria treatment, called "artemisinin combination therapy" or "ACT."  An overview of the randomized evalaution is available [here](https://www.povertyactionlab.org/sites/default/files/publication/2011.12.15-Subsidizing-Malaria.pdf).
 
-The aim of this empirical exercise is to review key Stata commands.  Please upload your answers to gradescope after completing the exercise.  You can also download the activity 
+The aim of this empirical exercise is to review key R commands.  Please upload your answers to gradescope after completing the exercise.  You can also download the activity 
 as an [R Script](E1-questions.R) or a [pdf](https://pjakiela.github.io/ECON523/exercises/E1-questions.pdf).  
 
 <br>
 
 ## Getting Started 
 
-There are two ways to get started.  One option is to start by downloading the `do` file linked above, saving it to a file on your computer, and opening it in Stata.  Alternatively, you can open a new `do` file in Stata and add the necessary commands yourself.
+There are two ways to get started.  One option is to start by downloading the `R` file linked above, saving it to a file on your computer, and opening it in RStudio.  Alternatively, you can open a new `R Script` file in RStudio and add the necessary commands yourself.
 
-The `do` file should start with the following preliminaries:
-
-```
-// ECON 523:  PROGRAM EVALUATION FOR INTERNATIONAL DEVELOPMENT
-// PROFESSOR PAMELA JAKIELA
-
-/* preliminary stuff*/
-clear all 
-set scheme s1mono 
-set more off
-set seed 12345
-version 16.1
-```
-
-You'll also want to include a command to **change the working directory** so that any outputs are saved where you can find them later.
+If you choose the latter option, you'll want to include a command to **change the working directory** so that any outputs are saved where you can find them later.
 
 ```
-** change working directory as appropriate to where you want to save
-cd "C:\Users\CookieMonster\Dropbox\econ523-2022\exercises\E1-why-evaluate-etc"
+## change working directory as appropriate to where you want to save
+setwd("C:\\Users\\examplePerson\\OneDrive\\Documents\\R")
 ```
 
-Because the data set is available on github, you can simply download it every time you want to use it.  The following code in the do file will do this:  
-
-```
-** load the data from the course website
-webuse set https://pjakiela.github.io/ECON523/exercises
-webuse E1-CohenEtAl-data.dta
-```
-
-If you prefer, you can instead download the data set using the link above and save it directly to your computer.  In that case, you would use the `use` command to open the data set in Stata.  
+Next, we'll have to load the data from the course website. To do this, visit the 'Empirical Exercise 1' page from which you downloaded this file and click on 'E1-CohenEtAl-data.dta' link on the first line of the page. Now, this file is in your 'Downloads' folder. Next, in RStudio, navigate to the 'File' tab and select 'Import Dataset' and then 'From Stata'. A new window should appear. Click the 'Browse' button in the top right corner of this window, find 'E1-CohenEtAl-data.dta' in your 'Downloads' folder, and select it. You should now be back at the window where you clicked 'Browse'. Finally, click 'Import' in the bottom corner of that window, and you've successfully imported the data! You can verify that the data was loaded by checking if 'E1_CohenEtAl_data' appears in the 'Data' section of RStudio, which should be in the top right corner of your screen.
 
 <br>
 
-## Stata Commands  
+## R Commands  
 
-In this exercise, we'll use the Stata commands `count`, `summarize` (`sum` for short), `tabulate` (`tab` for short), and `regress` (`reg` for short).  If you are unfamiliar with any of these commands, use type `help` followed by the name of the command (for example, `help sum`) to link to the relevant help page.  
+In this exercise, we'll use the R commands `count`, `summarize` (`sum` for short), `tabulate` (`tab` for short), and `regress` (`reg` for short).  If you are unfamiliar with any of these commands, use type `help` followed by the name of the command (for example, `help sum`) to link to the relevant help page.  
 
 You may also want to use the `display` command (`di` for short) to do simple math in Stata.  For example, if you type 
 ```
