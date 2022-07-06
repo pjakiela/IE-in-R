@@ -22,7 +22,17 @@ If you choose the latter option, you'll want to include a command to **change th
 setwd("C:\\Users\\examplePerson\\OneDrive\\Documents\\R")
 ```
 
-Next, we'll have to load the data into RStudio. To do this, first click this link: [E1-CohenEtAl-data.dta](https://pjakiela.github.io/ECON523/exercises/E1-CohenEtAl-data.dta). Now, this file is in your 'Downloads' folder as 'E1-CohenEtAl-data.dta'. Next, in RStudio, navigate to the 'File' tab and select 'Import Dataset' and then 'From Stata'. A new window should appear. Click the 'Browse' button in the top right corner of this window, find 'E1-CohenEtAl-data.dta' in your 'Downloads' folder, and select it. You should now be back at the window where you clicked 'Browse'. Finally, click 'Import' in the bottom corner of that window, and you've successfully imported the data! You can verify that the data was loaded by checking if 'E1_CohenEtAl_data' appears in the 'Data' section of RStudio, which should be in the top right corner of your screen.
+Next, we'll have to load the data into RStudio. There are two ways of doing this, but you only have to choose one. Firstly, you could just run these three lines of code in RStudio:
+
+```
+library(readr)
+fileUrl <- "https://raw.githubusercontent.com/pjakiela/IE-in-R/gh-pages/E1-CohenEtAl-data.csv"
+E1data <- read_csv(url(fileUrl))
+```
+
+If you were successful, you'll now see something called 'E1Data' in the 'Data' section of RStudio, which should be in the top right corner of your screen.
+
+Alternatively, you could first click this link: [E1-CohenEtAl-data.dta](https://pjakiela.github.io/ECON523/exercises/E1-CohenEtAl-data.dta). Now, this file is in your 'Downloads' folder as 'E1-CohenEtAl-data.dta'. Next, in RStudio, navigate to the 'File' tab and select 'Import Dataset' and then 'From Stata'. A new window should appear. Click the 'Browse' button in the top right corner of this window, find 'E1-CohenEtAl-data.dta' in your 'Downloads' folder, and select it. You should now be back at the window where you clicked 'Browse'. Finally, click 'Import' in the bottom corner of that window, and you've successfully imported the data! You can verify that the data was loaded by checking if 'E1_CohenEtAl_data' appears in the 'Data' section of RStudio, which should be in the top right corner of your screen.
 
 <br>
 
