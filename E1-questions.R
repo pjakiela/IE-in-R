@@ -24,8 +24,18 @@ setwd("C:\\Users\\jcpat\\OneDrive\\Documents\\R")
 ## check if you made it to the correct directory
 list.files()
 
-## Next, we'll have to load the data from the course website. To do this,
-## visit the 'Empirical Exercise 1' page from which you downloaded this file and
+## Next, we'll have to load the data from the course website. There are two
+## ways of doing this, but you only have to choose one. Firstly, you could just run these three lines:
+
+library(readr)
+fileUrl <- "https://raw.githubusercontent.com/pjakiela/IE-in-R/gh-pages/E1-CohenEtAl-data.csv"
+E1data <- read_csv(url(fileUrl))
+
+## If you were successful, you'll now see something called 'E1Data' in the 'Data'
+## section of RStudio, which should be in the top right corner of your screen.
+
+## Alternatively, you could visit the 'Empirical Exercise 1' page from which you
+## downloaded this file and
 ## click on 'E1-CohenEtAl-data.dta' link on the first line of the page. Now, this
 ## file is in your 'Downloads' folder. Next, in RStudio, navigate to the 'File'
 ## tab and select 'Import Dataset' and then 'From Stata'. A new window should
@@ -70,4 +80,6 @@ list.files()
 
  
 # 10. What is the t-statistic associated with the act_any variable?
+
+
 
