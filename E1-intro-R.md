@@ -22,19 +22,19 @@ If you choose the latter option, you'll want to include a command to **change th
 setwd("C:\\Users\\examplePerson\\OneDrive\\Documents\\R")
 ```
 
-Next, we'll have to load the data from the course website. To do this, visit the 'Empirical Exercise 1' page from which you downloaded this file and click on 'E1-CohenEtAl-data.dta' link on the first line of the page. Now, this file is in your 'Downloads' folder. Next, in RStudio, navigate to the 'File' tab and select 'Import Dataset' and then 'From Stata'. A new window should appear. Click the 'Browse' button in the top right corner of this window, find 'E1-CohenEtAl-data.dta' in your 'Downloads' folder, and select it. You should now be back at the window where you clicked 'Browse'. Finally, click 'Import' in the bottom corner of that window, and you've successfully imported the data! You can verify that the data was loaded by checking if 'E1_CohenEtAl_data' appears in the 'Data' section of RStudio, which should be in the top right corner of your screen.
+Next, we'll have to load the data into RStudio. To do this, first click this link: [E1-CohenEtAl-data.dta](https://pjakiela.github.io/ECON523/exercises/E1-CohenEtAl-data.dta). Now, this file is in your 'Downloads' folder as 'E1-CohenEtAl-data.dta'. Next, in RStudio, navigate to the 'File' tab and select 'Import Dataset' and then 'From Stata'. A new window should appear. Click the 'Browse' button in the top right corner of this window, find 'E1-CohenEtAl-data.dta' in your 'Downloads' folder, and select it. You should now be back at the window where you clicked 'Browse'. Finally, click 'Import' in the bottom corner of that window, and you've successfully imported the data! You can verify that the data was loaded by checking if 'E1_CohenEtAl_data' appears in the 'Data' section of RStudio, which should be in the top right corner of your screen.
 
 <br>
 
-## R Commands  
+## R Functions
 
-In this exercise, we'll use the R commands `count`, `summarize` (`sum` for short), `tabulate` (`tab` for short), and `regress` (`reg` for short).  If you are unfamiliar with any of these commands, use type `help` followed by the name of the command (for example, `help sum`) to link to the relevant help page.  
+In this exercise, we'll use the R functions `dim()`, `summary()`, `table()`, `lm()` (which stands for linear model - this is for regression), and `sd()`.  If you are unfamiliar with any of these, type `help("x")` into the console or your script, replacing 'x' with the function you'd like to learn more about (for example, `help("summary")`), to link to the relevant help page.
 
-You may also want to use the `display` command (`di` for short) to do simple math in Stata.  For example, if you type 
+You may also want to do simple math in R. To do this, just type in an expression, say:
 ```
-di 24/8
+24/8
 ```
-Stata will return the number 3 in answer to your question.  
+and R will return the number 3 in answer to your question.  
 
 <br>
 
@@ -72,7 +72,7 @@ What is the coefficient associated with the `act_any` variable?
 
 What is the associated standard error?  
 
-### Question  
+### Question 9
 
 What do you get when you divide the coefficient by the standard error?  
 
