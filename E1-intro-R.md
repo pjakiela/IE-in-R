@@ -92,7 +92,7 @@ What is the t-statistic associated with the `act_any` variable?
 
 <br>
 
-## Even More Fun with Stata  
+## Even More Fun with R  
 
 Use the `summary()`, `table()` functions to familiarize yourself with the other variables in the data set.   What are the mean and median levels of education among household heads?  What proportion of households live more than 2 km from the nearest chemist? For how many obesrvations is information on household size, the education level of the household head, and distance to the nearest chemist missing?
   
