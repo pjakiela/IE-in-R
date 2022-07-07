@@ -11,7 +11,7 @@ artemisinin combination treatment, or ACT, for malaria) often differ from those 
 review the different approaches to testing whether the mean of a(n outcome) variable is the same in two groups (defined by another variable).    
 
 Please upload your answers to gradescope after completing the exercise.  You can also download the entire activity 
-as a [do file](https://pjakiela.github.io/ECON523/exercises/E2-questions.do).  
+as an [R Script](https://pjakiela.github.io/ECON523/exercises/E2-questions.do).  
 
 <br>
 
