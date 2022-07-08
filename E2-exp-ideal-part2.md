@@ -51,7 +51,7 @@ Now, we'll use R's `rnorm()` function to create a variable, `y`, that is normall
 ```
 ** define some variables
 y <- rnorm(obs)
-z <- rnormal(obs, 10, 5)
+z <- rnorm(obs, 10, 5)
 ```
 
 Use the `summary()` and `hist()` commands to familiarize yourself with `y` and `z`.  What is the estimated mean of each variable?  What is the estimated standard deviation? What is the standard error associated with the estimate of the mean of each variable?  
@@ -70,7 +70,7 @@ What is the mean of `z`?
 
 ### Question 2 
 
-Use the command `egen mean_z = mean(z)` to generate a new variable equal to the mean of `z`.  What is the standard deviation of your new variable, `mean_z`?
+Use the command `mean_z = mean(z)` to generate a new variable equal to the mean of `z`.  What is the standard deviation of your new variable, `mean_z`?
 
 ### Question 3
 
