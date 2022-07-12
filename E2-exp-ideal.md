@@ -28,16 +28,19 @@ You can create a new R Script that begins with this code, or you can copy your c
 The variable `act_any` is a treatment dummy equal to 1 for observations in the treatment group and equal to zero otherwise.  The variable `c_act` is an indicator 
 for having used ACT when they last had malaria.  The data set also includes several variables capturing the baseline (i.e. pre-treatment) characteristics of the households in the sample.  These variables all begin with `b_`.  Familiarize yourself with these variables by typing
 ```
-summary(E2data[ , grepl("b_", names(E2data))])
+names(E2data)
 ```
-to summarize all the variables in the data set that begin with `b_`.  
-
 
 ## Empirical Exercise  
 
 We are going to test whether individuals *in the control group* who use ACT when they have malaria (i.e. individuals with `c_act==1`) differ from those 
 in the control group who do not use ACT (i.e. those with `c_act==0`) in terms of observable characteristics.  To focus on individuals in the control group, 
-we'll want to restrict ourselves to data points with `act_any==0` when answer the following questions.  
+we'll want to restrict ourselves to data points with `act_any==0` when answer the following questions. R makes this extremely simple; we can just create a new data frame that only contains observations with `act_any == 0` by typing
+```
+E2_control <- E2data[E2data$act_any == 0, ]
+```
+Now, we can just use E2_control as our dataframe, ignoring E2data.
+
 
 ### Question 1  
 
