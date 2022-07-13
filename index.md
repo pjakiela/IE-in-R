@@ -5,3 +5,4 @@
 [Exercise 1:  Getting Started in R](E1-intro-R.html)
 
 [Exercise 2A: Selection Bias and the Experimental Ideal, Part 1](E2-exp-ideal.html)
+[Exercise 2B: Selection Bias and the Experimental Ideal, Part 2](E2-exp-ideal-part2.html)
