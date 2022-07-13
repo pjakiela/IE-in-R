@@ -81,8 +81,8 @@ What is the standard error of the mean of `z`?  Confirm that the answer generate
 
 What happens when we randomly assign treatment?  Random assignment should generate two groups (a treatment group and a control group) that look similar in terms of their observable characteristics.  We can use the code below to assign half the observations in our sample to a treatment group.
 ```
-# assign half the sample (observations 1 to myObs/2) to treatment 
-treatment <- rbinom(n = myObs, size = 1, prob = 0.5)
+# assign half the sample (observations 1 to myObs / 2) to treatment 
+treatment <- c(rep(1, floor(myObs / 2)), rep(0, ceiling(myObs / 2)))
 ```
 
 If we were randomly assigning treatment in a data set that we had not just generated, we would first want to sort our data into a random order - but here, that is not necessary since `y` and `z` are randomly-generated to begin with.  
