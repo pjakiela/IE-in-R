@@ -30,6 +30,7 @@ for having used ACT when they last had malaria.  The data set also includes seve
 ```
 names(E2data)
 ```
+into the console or a script in RStudio.
 
 ## Empirical Exercise  
 
