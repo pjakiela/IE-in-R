@@ -44,7 +44,7 @@ the average maternal mortality rate in Division 2?
 The next lines of the code in the `do` file save the data in Stata format, and then graph maternal mortality rates in Division 1 
 and Division 2.  If you have important the data correctly and installed the `blindschemes` package, Stata should generate a figure that looks like this:
 
-![all-data-plot](vienna-by-wing-fig1.png)
+![all-data-plot](vienna-by-wing-R.png)
 
 What patterns do you notice in this figure?  How do maternal mortality rates in the two divisions of the hospital compare?
 
