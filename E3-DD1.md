@@ -38,10 +38,7 @@ Below are some quick descriptions of the variables in the dataset:
 
 
 
-
-After importing the data, the `do` file then adds labels to all the variables using the `label variable` command (which can be 
-abbreviated as `la var`).  Use the `describe` and `summarize` commands to familiarize yourself with the data set.  Which variable 
-records the maternal mortality rate in Division 1 of the hospital?  What is the average maternal mortality rate in Division 1?  What is 
+Use the `summary()` function to familiarize yourself with the data set. What is the average maternal mortality rate in Division 1?  What is 
 the average maternal mortality rate in Division 2?
 
 The next lines of the code in the `do` file save the data in Stata format, and then graph maternal mortality rates in Division 1 
