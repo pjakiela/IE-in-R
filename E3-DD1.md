@@ -25,6 +25,14 @@ Our first task is to import this Excel file into R. To do this, you should first
 ```
 E3data <- E3_Semmelweis1861_data
 ```
+Below are some quick descriptions of the variables in the dataset:
+
+| Variable | Description |
+|----------|-------------|
+| Births1  | Births in Division 1 (Treatment Group) |
+
+
+
 
 After importing the data, the `do` file then adds labels to all the variables using the `label variable` command (which can be 
 abbreviated as `la var`).  Use the `describe` and `summarize` commands to familiarize yourself with the data set.  Which variable 
