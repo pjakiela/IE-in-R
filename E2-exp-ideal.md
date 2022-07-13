@@ -107,7 +107,7 @@ When we run a simple OLS regression, R assumes that errors are **homoskedastic**
 
 You might (quite reasonably) be surprised to learn that the standard error reported after an OLS regression with robust standard errors is **not** the same as the one we calculated ourselves using the formula.  So, now we have three different standard errors!  The **robust** standard error from Question 14 differs from the standard error that you calculated by hand in Question 8 because of a degrees of freedom correction -- Stata's robust standard errors are but one of several different variants of the Huber-Eicker-White heteoskedasticity robust standard error.  Type 
 ```
-reg b_h_edu c_act if act_any==0, vce(hc2)
+feols(b_h_edu ~ c_act, data = E2_control, vcov = "HC1")
 ```
 and confirm that your standard error matches the answer to Question 8.  What is that standard error? 
 
