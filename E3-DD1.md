@@ -87,29 +87,32 @@ At this point, it is worth opening your Excel file to make sure that you are wri
 Now that we know that our `openxlsx` functions are working, we can add the mean of the variable `Rate1` (the maternal mortality rate in Division 1) for the years prior to the introduction of handwashing. We're going to put the mean maternal mortality rate in Division 1 prior to the handwashing intervention in cell B2: the **Treatment** column, in the **Before Handwashing** row.
 
 ```
-sum Rate1 if post==0
-return list
-putexcel B2=`r(mean)', hcenter nformat(#.##)
+beforeMean <- mean(data.matrix(E3_splitclinic[E3_splitclinic$post == 0, "Rate1"]))
+writeData(E3wb, sheet = "E3", data.frame(value = beforeMean),
+          startCol = "B", startRow = 2, colNames = FALSE)
 ```
 
-Notice that the local macro being exported to Excel appears in single quotes.  If you are writing **a number** to Excel using the `putexcel` command, it does not need to appear in (double) quotes (but sequences of letters and numbers - strings - do need double quotes).  We are using single quotes here because we are writing a local macro representing a number to Excel.  The `nformat()` option tells Stata how many digits to export.  The `hcenter` option tells Excel to center the number within the column.  
+Notice that the variable being exported to Excel does not appear in quotes.  If you are writing a number or the value of a variable to Excel using the `writeData()` function, it does not need to appear in quotes (but sequences of letters and numbers - strings - do need double quotes). 
 
-We can calculate the standard error of the mean by taking the standard deviation (reported by the `sum` command) and dividing it by the square root of the number of 
-observartions (also reported by the `sum` command).  What is the standard error of the mean postpartum mortality rate in the doctors' wing prior to Semmelweis' handwashing 
-intervention?
-
-```
-sum Rate1 if post==0
-local temp_se = r(sd)/sqrt(r(N)) 
-putexcel B3="(`temp_se')", hcenter nformat(#.##)
-```
-
-If we wanted to have our standard error appear in parentheses, we'd need to format the number *before* exporting to Excel.  We could do this using the following commands, which generate a local macro in string rather than numeric format:
+We can calculate the standard error of the mean by taking the standard deviation and dividing it by the square root of the number of 
+observations.  What is the standard error of the mean postpartum mortality rate in the doctors' wing prior to Semmelweis' handwashing 
+intervention? Use the code below to find out.
 
 ```
-sum Rate1 if post==0
-local temp_se = string(r(sd)/sqrt(r(N)),"%03.2f")
-putexcel B3="(`temp_se')", hcenter nformat(#.##)
+rate1Before <- data.matrix(E3_splitclinic[E3_splitclinic$post == 0, "Rate1"])
+temp_se <- sd(rate1Before) / sqrt(length(rate1Before))
+writeData(E3wb, sheet = "E3", data.frame(value = temp_se),
+          startCol = "B", startRow = 3, colNames = FALSE)
+saveWorkbook(E3wb, "E3wb.xlsx", overwrite = TRUE)
+```
+
+If we wanted to have our standard error appear in parentheses, we'd need to format the number *before* exporting to Excel.  We could do this using the following commands, which send the value to Excel as a string rather than as a number:
+
+```
+rate1Before <- data.matrix(E3_splitclinic[E3_splitclinic$post == 0, "Rate1"])
+writeData(E3wb, sheet = "E3", data.frame(value = paste("(", temp_se, ")")),
+          startCol = "B", startRow = 3, colNames = FALSE)
+saveWorkbook(E3wb, "E3wb.xlsx", overwrite = TRUE)
 ```
 
 At this point, it makes sense to check in on your Excel output again - just make sure to close the file after you look at it.  You should have something 
