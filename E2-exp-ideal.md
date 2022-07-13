@@ -39,13 +39,13 @@ we'll want to restrict ourselves to data points with `act_any==0` when answer th
 ```
 E2_control <- E2data[E2data$act_any == 0, ]
 ```
-Now, we can just use E2_control as our dataframe, ignoring E2data.
+Now, we can just use E2_control as our data frame, ignoring E2data.
 
 
 ### Question 1  
 
-Use the `t.test()` function to test whether individuals in the control group who use ACT when they have malaria (i.e. individuals with `c_act==1`) differ from those 
-in the control group who do not use ACT when they have malaria in terms of the educational attainment of their head of household.  What R command would you use to do this?  
+Use the `t.test()` function with the `var.equal` parameter set to `TRUE` (i.e. `t.test(y ~ x, var.equal = TRUE)`) to test whether individuals in the control group who use ACT when they have malaria (i.e. individuals with `c_act==1`) differ from those 
+in the control group who do not use ACT when they have malaria in terms of the educational attainment of their head of household.  What R command would you use to do this?
 
 ### Question 2  
 
@@ -58,7 +58,7 @@ What is the mean level of (household head) educational attainment among individu
 ### Question 4  
 
 What is the standard deviation of the level of (household head) educational attainment among individuals in the control group who **did** use ACT the last time they 
-had malaria?  
+had malaria?
 
 ### Question 5  
 
@@ -70,19 +70,22 @@ What is the estimated difference in educational attainment between those (in the
 
 ### Question 7  
 
-What is the standard error associated with the estimated difference in educational attainment between those (in the control group) who used ACT the last time they had malaria and those who did not?  
+What is the standard error associated with the estimated difference in educational attainment between those (in the control group) who used ACT the last time they had malaria and those who did not? To find this, just tack `$stderr` onto the end of your `t.test()` command from question 1 (i.e. `t.test(y ~ x, var.equal = TRUE)$stderr`).
 
 ### Question 8  
 
-To understand where this standard error comes from, remember that the mean value of `b_h_edu` among people who do (or do not) have `c_act==1` is a random variable, as is the difference in means between those who have `c_act==1` and those who have `c_act==0`.  The variance of the **difference** of two independent random variables is the **sum** of their individual variances.  Here, our estimator of the variance of the difference in `b_h_edu` between those with `c_act==1` and those with `c_act==0` is the sum of the variances of the subgroup means; the estimated variance of each subgroup mean is the square of the estimated standard error.  If you used the results of your `t.test()` function to calculate the standard error of the difference in means "by hand" (by which I mean, using Stata to do arithmetic instead of using the `t.test()` function), what answer would you arrive at?  
+To understand where this standard error comes from, remember that the mean value of `b_h_edu` among people who do (or do not) have `c_act==1` is a random variable, as is the difference in means between those who have `c_act==1` and those who have `c_act==0`.  The variance of the **difference** of two independent random variables is the **sum** of their individual variances.  Here, our estimator of the variance of the difference in `b_h_edu` between those with `c_act==1` and those with `c_act==0` is the sum of the variances of the subgroup means; the estimated variance of each subgroup mean is the square of the estimated standard error.  If you used the results of your `t.test()` function to calculate the standard error of the difference in means "by hand" (by which I mean, using R to do arithmetic instead of using the `t.test()` function), what answer would you arrive at?  
 
 ### Question 9 
 
-If you have answered Question 8 correctly, you might be wondering why the standard error you just calculated differs (slightly) from the one reported by the `t.test()` function.  The answer is that our "by hand" calculation did not assume that the variance of `b_h_edu` was the same in both groups, but Stata's `t.test()` function does impose that assumption -- unless you add the `unequal` option.  Trying redoing your `t.test()` with `unequal` at the end.  What is the estimated standard error on the difference in means now?  It should match your answer to Question 8.
+If you have answered Question 8 correctly, you might be wondering why the standard error you just calculated differs (slightly) from the one reported by the `t.test()` function.  The answer is that our "by hand" calculation did not assume that the variance of `b_h_edu` was the same in both groups, but R's `t.test()` function imposes that assumption when the `var.equal` parameter is set to `TRUE`.  Trying redoing your `t.test()`, removing the `var.equal` parameter (i.e. `t.test(y ~ x)`). This will automatically set `var.equal` to `FALSE`, as `FALSE` is its default value.  What is the estimated standard error on the difference in means now?  It should match your answer to Question 8.
 
 ### Question 10  
 
-We can also test whether the mean of a variable (`b_h_edu`) is the same in two groups by regressing it on a dummy characterizing the two groups.  What command would you use to regress `b_h_edu` on `c_act`, restricting the sample to the control group in the RCT?
+We can also test whether the mean of a variable (`b_h_edu`) is the same in two groups by regressing it on a dummy characterizing the two groups.  What command would you use to regress `b_h_edu` on `c_act`, restricting the sample to the control group in the RCT? Try using the `feols()` function from the `fixest` package that we loaded here instead of R's standard `lm()` function. It was designed for economists, and it'll make your life much easier! The basic syntax you should use is
+```
+feols(y ~ x, data = your_data_frame)
+```
 
 ### Question 11  
 
@@ -98,7 +101,7 @@ How does the standard error from your regression compare to the standard error y
 
 ### Question 14
 
-When we run a simple OLS regression, Stata assumes that errors are **homoskedastic** (the variance of the error term does not vary across observations).  As an alternative, we can add `, robust` at the end of our regression command to tell Stata to calculated heteroskedasticity-robust standard errors (which are the default in most applied microeconomic research).  Rerun your regression, adding `, robust` at the end.  What is the estimated standard error associated with the coefficient on `c_act` now? 
+When we run a simple OLS regression, R assumes that errors are **homoskedastic** (the variance of the error term does not vary across observations).  As an alternative, we can add `vcov = "hetero"` as a parameter of our `feols()` function (i.e. `feols(y ~ x, data = your_data_frame, vcov = "hetero")`) to tell R to calculate heteroskedasticity-robust standard errors (which are the default in most applied microeconomic research).  Rerun your regression with the new `vcov` parameter. What is the estimated standard error associated with the coefficient on `c_act` now? 
 
 ### Question 15 
 
