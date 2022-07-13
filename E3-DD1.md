@@ -41,20 +41,22 @@ Below are some quick descriptions of the variables in the dataset:
 Use the `summary()` function to familiarize yourself with the data set. What is the average maternal mortality rate in Division 1?  What is 
 the average maternal mortality rate in Division 2?
 
-The next lines of the code in the `do` file save the data in Stata format, and then graph maternal mortality rates in Division 1 
-and Division 2.  If you have important the data correctly and installed the `blindschemes` package, Stata should generate a figure that looks like this:
+The next lines of the code in the R Script graph maternal mortality rates in Division 1 and Division 2. When you run these lines, R should generate a figure that looks like this:
 
 ![all-data-plot](vienna-by-wing-R.png)
 
 What patterns do you notice in this figure?  How do maternal mortality rates in the two divisions of the hospital compare?
 
-Use the `list` command to list the the notes contained in the data set by year.  If you only want to list the rows of data 
-that include a note (i.e. where the `Note` variable is non-missing), you can add `if Note!=""` at the end of the command.  
+Use the the following command to list the the notes contained in the data set by year:
+```
+E3data[is.na(E3data$Notes) == FALSE, c("Year", "Notes")]
+```
+This expression takes the rows of `E3data` that have notes (i.e. the 'Notes' variable is not NA, see the first part of the expression in the square brackets) and then lists out the "Year" and "Notes" columns of these particular rows. Subsetting a data frame in this way is an incredibly useful skill, and I'd encourage you to take some time to practice the skill yourself!
 
 In what year did the hospital first move to the system where patients in Division 1 were treated by doctors and patients in Division 2 
-were treated by midwives?  Drop the observations (years) before this happened using the drop command.
+were treated by midwives?  Drop the observations (years) before this happened by creating a new variable called `E3_splitclinic` that stores the appropriate subset of `E3data`.
 
-_Make sure that you record this and all your subsequent commands in your do file, so that you can re-run your code later._
+_Make sure that you record this and all your subsequent commands in your R Script file so that you can re-run your code later._
 
 Generate a `post` variable equal to one for years after the handwashing policy was implemented (and zero otherwise).  What is the mean 
 postpartum mortality rate in the doctors' wing (Division 1) prior to the implementation of the handwashing policy?
