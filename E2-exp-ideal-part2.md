@@ -8,7 +8,7 @@ We'll use variables to easily change the number of observations and other parame
 explore the properties of randomly-assigned treatment groups in larger and smaller samples.   
 
 Please upload your answers to gradescope after completing the exercise.  You can also download the entire activity 
-as an [R Script](https://pjakiela.github.io/ECON523/exercises/E2B-questions.do).  
+as an [R Script](E2B-questions.R).  
 
 <br>
 
