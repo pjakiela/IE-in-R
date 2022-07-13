@@ -11,15 +11,14 @@ artemisinin combination treatment, or ACT, for malaria) often differ from those 
 review the different approaches to testing whether the mean of a(n outcome) variable is the same in two groups (defined by another variable).    
 
 Please upload your answers to gradescope after completing the exercise.  You can also download the entire activity 
-as an [R Script](E2-questions.R).  
+as an [R Script](https://pjakiela.github.io/ECON523/exercises/E2-questions.do).  
 
 <br>
 
 ## Getting Started 
 
-We can use the same code that we used in Empirical Exercise 1 to load the data (let's call it E2data this time), but we'll include another command to load the `fixest` package, which we'll need at the end of this exercise:
+We can use the same code that we used in Empirical Exercise 1 to load the data (let's call it E2data this time):
 ```
-library(fixest)
 library(readr)
 fileUrl <- "https://raw.githubusercontent.com/pjakiela/IE-in-R/gh-pages/E1-CohenEtAl-data.csv"
 E2data <- read_csv(url(fileUrl))
@@ -31,7 +30,6 @@ for having used ACT when they last had malaria.  The data set also includes seve
 ```
 names(E2data)
 ```
-into the console or a script in RStudio.
 
 ## Empirical Exercise  
 
@@ -107,7 +105,7 @@ When we run a simple OLS regression, R assumes that errors are **homoskedastic**
 
 ### Question 15 
 
-You might (quite reasonably) be surprised to learn that the standard error reported after an OLS regression with robust standard errors is **not** the same as the one we calculated ourselves using the formula.  So, now we have three different standard errors!  The **robust** standard error from Question 14 differs from the standard error that you calculated by hand in Question 8 because of a degrees of freedom correction -- the `fixest` package's robust standard errors are but one of several different variants of the Huber-Eicker-White heteoskedasticity robust standard error.  Type 
+You might (quite reasonably) be surprised to learn that the standard error reported after an OLS regression with robust standard errors is **not** the same as the one we calculated ourselves using the formula.  So, now we have three different standard errors!  The **robust** standard error from Question 14 differs from the standard error that you calculated by hand in Question 8 because of a degrees of freedom correction -- Stata's robust standard errors are but one of several different variants of the Huber-Eicker-White heteoskedasticity robust standard error.  Type 
 ```
 feols(b_h_edu ~ c_act, data = E2_control, vcov = "HC1")
 ```
