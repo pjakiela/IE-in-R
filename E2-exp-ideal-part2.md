@@ -27,13 +27,12 @@ Here, we define `myObs`, setting it equal to 500.  If we want to see that we've 
 ```
 # define a variable to indicate the number of observations
 myObs <- 500
-myObs
 ```
 Now, we'll use R's `rnorm()` function to create a variable, `y`, that is normally-distributed with mean zero and variance one (i.e. a standard normal).  We can also scale the a standard normal to create a variable with a different mean and/or variance.
 ```
 # define some variables
-y <- rnorm(obs)
-z <- 5 * rnorm(obs) + 10
+y <- rnorm(myObs)
+z <- 5 * rnorm(myObs) + 10
 ```
 
 Use the `summary()` command to familiarize yourself with `y` and `z`.  What is the estimated mean of each variable?  What is the estimated standard deviation? What is the standard error associated with the estimate of the mean of each variable?  
