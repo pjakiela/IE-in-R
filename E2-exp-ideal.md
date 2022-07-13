@@ -17,8 +17,9 @@ as an [R Script](https://pjakiela.github.io/ECON523/exercises/E2-questions.do).
 
 ## Getting Started 
 
-We can use the same code that we used in Empirical Exercise 1 to load the data (let's call it E2data this time):
+We can use the same code that we used in Empirical Exercise 1 to load the data (let's call it E2data this time), but we'll include another command to load the `fixest` package, which we'll need at the end of this exercise:
 ```
+library(fixest)
 library(readr)
 fileUrl <- "https://raw.githubusercontent.com/pjakiela/IE-in-R/gh-pages/E1-CohenEtAl-data.csv"
 E2data <- read_csv(url(fileUrl))
