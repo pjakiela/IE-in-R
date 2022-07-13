@@ -61,24 +61,31 @@ _Make sure that you record this and all your subsequent commands in your R Scrip
 Generate a `post` variable equal to one for years after the handwashing policy was implemented (and zero otherwise).  What is the mean 
 postpartum mortality rate in the doctors' wing (Division 1) prior to the implementation of the handwashing policy?
 
-Now let's put this result in a table!  We're going to use the `putexcel` command to write our results into an Excel file.  `putexcel` 
-is a simple command that allows you to write Stata output to a particular cell or set of cells in an Excel file.  Before getting started 
-with `putexcel`, use the `pwd` ("print working directory") command in the Stata command window to make sure that you are writing your 
-results to an appropriate file.  Use the `cd` command to change your file path if necessary.  Then set up the Excel file that will 
-receive your results using the commands:
+Now let's put this result in a table!  We're going to use some functions in the `openxlsx` package to write our results into an Excel file.  `openxlsx` 
+is a useful package that allows you to write R output to a particular cell or set of cells in an Excel file.  Before getting started 
+with `openxlsx`, use the `getwd()` ("print working directory") command in the R console to make sure that you are writing your 
+results to an appropriate file.  Use the `setwd()` function (used in previous exercises, check those out if you don't remember how to use it) to change your file path if necessary.  Then set up the Excel file that will receive your results using the commands:
 
 ```
-putexcel set E3-DD-table1.xlsx, replace
-putexcel B1="Treatment", hcenter bold border(top)
-putexcel C1="Control", hcenter bold border(top)
-putexcel D1="Difference", hcenter bold border(top)
-putexcel A2="Before Handwashing", bold
-putexcel A4="After Handwashing", bold
+library(openxlsx)
+E3wb <- createWorkbook()
+addWorksheet(E3wb, "E3")
+writeData(E3wb, sheet = "E3", data.frame(value = "Treatment"),
+          startCol = "B", startRow = 1, colNames = FALSE)
+writeData(E3wb, sheet = "E3", data.frame(value = "Control"),
+          startCol = "C", startRow = 1, colNames = FALSE)
+writeData(E3wb, sheet = "E3", data.frame(value = "Difference"),
+          startCol = "D", startRow = 1, colNames = FALSE)
+writeData(E3wb, sheet = "E3", data.frame(value = "Before Handwashing"),
+          startCol = "A", startRow = 2, colNames = FALSE)
+writeData(E3wb, sheet = "E3", data.frame(value = "After Handwashing"),
+          startCol = "A", startRow = 4, colNames = FALSE)
+saveWorkbook(E3wb, "E3wb.xlsx", overwrite = TRUE)
 ```
 
-At this point, it is worth opening your Excel file to make sure that you are writing to it successfully.  **Be sure to close the file after you look at it**; Stata won't write over an open Excel file.  The column and row labels should all appear in bold font (the `bold` option), and the column headings in cells B1, C1, and D1 should be centered (the `hcenter` option) and have a border above them (the `border()` option).  
+At this point, it is worth opening your Excel file to make sure that you are writing to it successfully.  **Be sure to close the file after you look at it**; R won't write over an open Excel file.  
 
-Now that we know that `putexcel` is working, we can add the mean of the variable `Rate1` (the maternal mortality rate in Division 1) for the years prior to the introduction of handwashing.  Remember that you can always use the `return list` command after a command like `summarize` to see what statistics the summarize command stored in Stata's short-term memory as locals.  Any of these statistics can be exported to Excel.  We're going to put the mean maternal mortality rate in Division 1 prior to the handwashing intervention in cell B2:  the **Treatment** column, in the **Before Handwashing** row.
+Now that we know that our `openxlsx` functions are working, we can add the mean of the variable `Rate1` (the maternal mortality rate in Division 1) for the years prior to the introduction of handwashing. We're going to put the mean maternal mortality rate in Division 1 prior to the handwashing intervention in cell B2: the **Treatment** column, in the **Before Handwashing** row.
 
 ```
 sum Rate1 if post==0
@@ -107,7 +114,7 @@ putexcel B3="(`temp_se')", hcenter nformat(#.##)
 ```
 
 At this point, it makes sense to check in on your Excel output again - just make sure to close the file after you look at it.  You should have something 
-that looks like this:
+that looks similar to this:
 
 ![Excel output](E3-excel-output.png)  
 
