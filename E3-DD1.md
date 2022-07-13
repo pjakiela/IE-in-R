@@ -58,8 +58,7 @@ were treated by midwives?  Drop the observations (years) before this happened by
 
 _Make sure that you record this and all your subsequent commands in your R Script file so that you can re-run your code later._
 
-Generate a `post` variable equal to one for years after the handwashing policy was implemented (and zero otherwise).  What is the mean 
-postpartum mortality rate in the doctors' wing (Division 1) prior to the implementation of the handwashing policy?
+Generate a `post` variable equal to one for years after the handwashing policy was implemented (and zero otherwise) using the `ifelse()` function. Remember that if you don't know how to use a particular function, you can type `help(function_name)` into the R console, and RStudio will help you figure it out. The command would be `help(ifelse)` in this particular case.  What is the mean postpartum mortality rate in the doctors' wing (Division 1) prior to the implementation of the handwashing policy?
 
 Now let's put this result in a table!  We're going to use some functions in the `openxlsx` package to write our results into an Excel file.  `openxlsx` 
 is a useful package that allows you to write R output to a particular cell or set of cells in an Excel file.  Before getting started 
