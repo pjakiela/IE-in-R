@@ -30,6 +30,11 @@ Below are some quick descriptions of the variables in the dataset:
 | Variable | Description |
 |----------|-------------|
 | Births1  | Births in Division 1 (Treatment Group) |
+| Deaths1 | Deaths in Division 1 (Treatment Group) |
+| Rate1 | Mortality Rate in Division 1 (Treatment Group) |
+| Births2  | Births in Division 2 (Comparison Group) |
+| Deaths2 | Deaths in Division 2 (Comparison Group) |
+| Rate2 | Mortality Rate in Division 2 (Comparison Group) |
 
 
 
