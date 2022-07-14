@@ -124,7 +124,7 @@ that looks similar to this:
 
 ## Empirical Exercise
 
-_NOTE:  This empirical exercise differs from previous ones in that you will be graded based on your (Stata) code and your final output (the Excel table).  You will not be asked to enter any numbers into gradescope (but you do need to upload your do file and Excel output there after you finish the exercise)._  
+_NOTE:  This empirical exercise differs from previous ones in that you will be graded based on your (R) code and your final output (the Excel table).  You will not be asked to enter any numbers into gradescope (but you do need to upload your R Script and Excel output there after you finish the exercise)._  
 
 ### Question 1
 
@@ -139,41 +139,47 @@ to confirm that your standard error calculation (above) is correct. Now, let's f
 
 ### Question 2 
 
-Use the `t.test()` function to calculate the mean and standard error for the other three cells required for difference-in-differences analysis:  the treatment group in the post-treatment period, the control group in the pre-treatment period, and the control gorup in the post-treatment period.  Export these results to Excel using the `xlsx` functions used above.
+Use the `t.test()` function to calculate the mean and standard error for the other three cells required for difference-in-differences analysis:  the treatment group in the post-treatment period, the control group in the pre-treatment period, and the control gorup in the post-treatment period. Export these results to Excel using the `xlsx` functions used above, or type them in manually (I'd recommend the latter in this case).
 
 ### Question 3 
 
-Now run a t-test of the hypothesis that the mean maternal mortality rate in Division 1 was the same in the pre-treatment and post-treatment periods (using the `ttest` command).  You will need to calculate the difference in means as the difference between the locals `r(mu_1)` and `r(mu_2)`, which are stored in Stata after the `ttest` command.  Export the estimated difference in means and the estimated standard error of the difference in means to Excel.
+Now run a t-test of the hypothesis that the mean maternal mortality rate in Division 1 was the same in the pre-treatment and post-treatment periods (using the `t.test()` function).  Use the means you found in Question 2 to find the difference in means, and use the syntax described in the second to last sentence of Question 1 to find the standard error of the difference in means.  Export the estimated difference in means and the estimated standard error of the difference in means to Excel, or type them in manually.
 
 ### Question 4 
 
-Now do the same for Division 2:  run a t-test of the hypothesis that the mean maternal mortality rate in Division 2 was the same in the pre-treatment and post-treatment periods, and Export your estimated difference in means to Excel together with the associated standard error.
+Now do the same for Division 2:  run a t-test of the hypothesis that the mean maternal mortality rate in Division 2 was the same in the pre-treatment and post-treatment periods, and export your estimated difference in means to Excel together with the associated standard error.
 
 ### Question 5
 
-Next, we want to test the hypothesis that the mean maternal mortality rate was the same in Division 1 and Division 2 prior to the handwashing intervention.  One approach is to do the calculations ourselves using the formulas.  We know the sample mean of the `Rate1` variable in the pre-treatment period, and we know how to use Stata to find the standard error of that mean (and, in fact, we have already recorded this standard error in our Excel table).  We also know the mean of the Rate2 variable and the associated standard error for the pre-treatment period.  Since these two means are independendent random variables, we know that the standard error of the estimated difference in means is the square root of the sum of the squared standard errors of the individual means.  Write a few lines of Stata code that would generate locals equal to the estimated difference in means and the standard error of that estimated difference.
+Next, we want to test the hypothesis that the mean maternal mortality rate was the same in Division 1 and Division 2 prior to the handwashing intervention.  One approach is to do the calculations ourselves using the formulas.  We know the sample mean of the `Rate1` variable in the pre-treatment period, and we know how to use R to find the standard error of that mean (and, in fact, we have already recorded this standard error in our Excel table).  We also know the mean of the Rate2 variable and the associated standard error for the pre-treatment period.  Since these two means are independendent random variables, we know that the standard error of the estimated difference in means is the square root of the sum of the squared standard errors of the individual means.  Write a few lines of R code that would generate variables equal to the estimated difference in means and the standard error of that estimated difference.
 
 ### Question 6 
 
-We can also use the ttest command to test the hypothesis that the means of two variables are equal - you can read about this in the help file for `ttest`.  Confirm that the command 
+We can also use the `t.test()` function to test the hypothesis that the means of two variables are equal - you can read about this on the help page for `t.test`.  Confirm that the commands
 
 ```
-ttest Rate1 = Rate2 if post==0, unpaired unequal
+# switch the variable names to whatever you called
+# your subsets
+
+# subtract the two values here
+t.test(rate1Before, rateBefore)$estimate
+
+t.test(rate1Before, rate2Before)$stderr
 ```
 
-yields the same estimated difference in means and standard error that you calculated in Question 5. Then export your estimated difference in means and standard error to Excel.
+yield the same estimated difference in means and standard error that you calculated in Question 5. Then export your estimated difference in means and standard error to Excel.
 
 ### Question 7 
 
-Now use the `ttest` command to calculate the estimated difference in maternal mortality between Division 1 and Division 2 in the post-treatment period.  Export your difference in means and the associated standard error to Excel.
+Now use the `t.test()` function to calculate the estimated difference in maternal mortality between Division 1 and Division 2 in the post-treatment period.  Export your difference in means and the associated standard error to Excel.
 
 ### Question 8 
 
-Write Stata code to calculate the difference-in-differences estimator of the treatment effect of handwashing and export your results to Excel.
+Write R code to calculate the difference-in-differences estimator of the treatment effect of handwashing and export your results to Excel.
 
 ### Question 9 
 
-Write Stata code to calculate the standard error of the difference-in-differences estimator of the treatment effect of handwashing and export your results to Excel.  Assume that the four cell means (treatment X pre, treatment X post, control X pre, control X post) are independent random variables.
+Write R code to calculate the standard error of the difference-in-differences estimator of the treatment effect of handwashing and export your results to Excel.  Assume that the four cell means (treatment X pre, treatment X post, control X pre, control X post) are independent random variables.
 
 <br> 
 
