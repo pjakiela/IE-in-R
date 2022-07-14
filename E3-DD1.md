@@ -77,6 +77,8 @@ writeData(E3wb, sheet = "E3", data.frame(value = "Before Handwashing"),
           startCol = "A", startRow = 2, colNames = FALSE)
 writeData(E3wb, sheet = "E3", data.frame(value = "After Handwashing"),
           startCol = "A", startRow = 4, colNames = FALSE)
+writeData(E3wb, sheet = "E3", data.frame(value = "Difference"),
+          startCol = "A", startRow = 6, colNames = FALSE)
 saveWorkbook(E3wb, "E3wb.xlsx", overwrite = TRUE)
 ```
 
@@ -132,7 +134,7 @@ You can also get the standard error of a mean using R's `t.test()` function.  Us
 t.test(rate1Before)$stderr
 ```
 
-to confirm that your standard error calculation (above) is correct. Now, let's figure out which values R generates and stores when you call the `t.test()` function. To do this, set assign the `t.test()` command above to a variable, chopping off `$stderr`. Then, call the `names()` function on that variable. What are the names of the mentioned values?
+to confirm that your standard error calculation (above) is correct. Now, let's figure out which values R generates and stores when you call the `t.test()` function. To do this, call the `help()` function on the `t.test()` function, and then scroll down to the 'Values' section of the help page. Note that you can call `t.test()$any_of_those_values` to extract any one of those values. What are the names of the mentioned values?
 
 
 ### Question 2 
