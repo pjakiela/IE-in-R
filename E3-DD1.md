@@ -126,17 +126,18 @@ _NOTE:  This empirical exercise differs from previous ones in that you will be g
 
 ### Question 1
 
-You can also get the standard error of a mean using Stata's `ci means` command.  Use the command 
+You can also get the standard error of a mean using R's `t.test()` function.  Use the command 
 
 ```
-ci means Rate1 if post==0
+t.test(rate1Before)$stderr
 ```
 
-to confirm that your standard error calculation (above) is correct.   What local macros are stored after you run the `ci means` command?
+to confirm that your standard error calculation (above) is correct. Now, let's figure out which values R generates and stores when you call the `t.test()` function. To do this, set assign the `t.test()` command above to a variable, chopping off `$stderr`. Then, call the `names()` function on that variable. What are the names of the mentioned values?
+
 
 ### Question 2 
 
-Use the `ci means` command to calculate the mean and standard error for the other three cells required for difference-in-differences analysis:  the treatment group in the post-treatment period, the control group in the pre-treatment period, and the control gorup in the post-treatment period.  Export these results to Excel using the `putexcel` command.
+Use the `t.test()` function to calculate the mean and standard error for the other three cells required for difference-in-differences analysis:  the treatment group in the post-treatment period, the control group in the pre-treatment period, and the control gorup in the post-treatment period.  Export these results to Excel using the `xlsx` functions used above.
 
 ### Question 3 
 
