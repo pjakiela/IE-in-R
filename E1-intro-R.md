@@ -95,7 +95,7 @@ What is the t-statistic associated with the `act_any` variable?
 
 ## Even More Fun with R  
 
-Use the `summary()`, `table()` functions to familiarize yourself with the other variables in the data set.   What are the mean and median levels of education among household heads?  What proportion of households live more than 2 km from the nearest chemist? For how many obesrvations is information on household size, the education level of the household head, and distance to the nearest chemist missing?
+Use the `summary()` and `table()` functions to familiarize yourself with the other variables in the data set.   What are the mean and median levels of education among household heads?  What proportion of households live more than 2 km from the nearest chemist? For how many obesrvations is information on household size, the education level of the household head, and distance to the nearest chemist missing?
   
 Calculate the mean of `c_act` in the treatment group (observations with `act_any==1`) and in the comparison group (observations with `act_any==0`).  How do these means relate to your regression results above, when you regressed `c_act` on `act_any`?  
 
