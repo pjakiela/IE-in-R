@@ -3,7 +3,7 @@
 In this exercise, we'll be using a data set on school enrollment in 15 African countries that eliminated primary 
 school fees between 1990 and 2015.  Raw data on primary and secondary school enrollment comes from the World Bank's 
 [World Development Indicators Database](https://databank.worldbank.org/source/world-development-indicators).  The 
-data set that we'll use is posted at [here](https://pjakiela.github.io/TWFE/WDI-FPE-data.dta).  We'll be using 
+data set that we'll use is posted at [here](WDI-FPE-data.csv).  We'll be using 
 this data set to estimate the two-way fixed effects estimator of the impact of eliminating school fees on enrollment.  Since 
 this policy was phased in by different countries at different times, it is a useful setting for exploring the potential pitfalls 
 of two-way fixed effects.
@@ -12,18 +12,12 @@ of two-way fixed effects.
 
 ## Getting Started
 
-Start by creating your own do file that downloads [the data set WDI-FPE-data.dta](https://pjakiela.github.io/TWFE/WDI-FPE-data.dta) from the web.  Your 
-code will look something like this:
+Start by creating your own R Script that downloads [the data set WDI-FPE-data.csv](WDI-FPE-data.csv) from the web. Your 
+code should look something like this:
 
 ```
-// ECON 523
-// EMPIRICAL EXERCISE 5
-clear all 
-set scheme s1mono 
-set more off
-set seed 12345
-webuse set https://pjakiela.github.io/TWFE/
-webuse WDI-FPE-data.dta
+fileUrl <- 'https://raw.githubusercontent.com/pjakiela/IE-in-R/gh-pages/WDI-FPE-data.csv'
+E5data <- read.csv(fileUrl)
 ```
 
 The data set contains eight variables:  `country`, `year`, `ccode`, `id`, `primary`, `secondary`, 
@@ -71,7 +65,7 @@ primary school fees, and equal to 0 otherwise.
 Which countries eliminated school fees in the 1990s?  How many countries eliminated primary school fees after 2010?  
 
 We are going to be looking at the outcome variable `primary`, but this variable is missing for some 
-country-years.  How many?  Add a line to your do file that drops those observations to make your life easier (you'll 
+country-years.  How many?  Add a line to your R Script that drops those observations to make your life easier (you'll 
 see why this matters later).  
 
 What is the mean value of `primary` prior to the elimination of primary school fees?  How does that compare to 
