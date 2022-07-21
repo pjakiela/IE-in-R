@@ -159,10 +159,10 @@ We can also use the `t.test()` function to test the hypothesis that the means of
 
 ```
 # switch the variable names to whatever you called
-# your subsets
+# your subsets in Question 2
 
 # subtract the two values here
-t.test(rate1Before, rateBefore)$estimate
+t.test(rate1Before, rate2Before)$estimate
 
 t.test(rate1Before, rate2Before)$stderr
 ```
