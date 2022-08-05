@@ -15,3 +15,5 @@
 [Exercise 5: Two-Way Fixed Effects](E5-TWFE.html)
 
 [Map Link Test](InteractiveMap_Professors.html)
+
+[Map Page Test](MapTest.html)
